@@ -1,0 +1,20 @@
+{
+  "name": "micro-front-end",
+  "version": "1.0.0",
+  "description": "微前端综合教程",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./build/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankera/micro-front-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ankera/micro-front-end/issues"
+  },
+  "homepage": "https://github.com/Ankera/micro-front-end#readme"
+}
