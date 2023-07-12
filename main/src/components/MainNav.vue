@@ -3,7 +3,7 @@
     <div class="main-nav-content">
       <!-- logo内容 -->
       <div class="main-nav-logo">
-        <img src="" alt="">
+        <img src="" alt="" />
       </div>
 
       <!-- 导航列表详情 -->
@@ -21,7 +21,7 @@
       <!-- 搜索 -->
       <div class="main-nav-search">
         <div class="main-nav-search-icon">
-          <img src="../assets/blue-search.png" alt="">
+          <img src="../assets/blue-search.png" alt="" />
         </div>
         <div class="main-nav-search-input">
           <input
@@ -29,63 +29,68 @@
             id="main-nav-search"
             v-if="searchStatus"
             @blur="setSearchStatus(false)"
+          />
+          <div
+            class="main-nav-search-input-fake"
+            v-else
+            @click="setSearchStatus(true)"
           >
-          <div class="main-nav-search-input-fake" v-else @click="setSearchStatus(true)">
             快速搜索
           </div>
         </div>
-        <div class="main-nav-search-button">
-          搜索
-        </div>
+        <div class="main-nav-search-button">搜索</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, watch } from 'vue'
-import { NAV_LIST } from '../const/nav'
-import { useRouter, useRoute } from 'vue-router'
+import { ref, watch } from "vue";
+import { NAV_LIST } from "../const/nav";
+import { useRouter, useRoute } from "vue-router";
 export default {
-  name: 'MainNav',
+  name: "MainNav",
   setup() {
-    const router = useRouter()
-    const route = useRoute()
+    const router = useRouter();
+    const route = useRoute();
 
-    watch(route, (val) => {
-      for (let i = 0; i < NAV_LIST.length; i++) {
-        if (val.fullPath.indexOf(NAV_LIST[i].url) !== -1) {
-          currentIndex.value = i
+    watch(
+      route,
+      (val) => {
+        for (let i = 0; i < NAV_LIST.length; i++) {
+          if (val.fullPath.indexOf(NAV_LIST[i].url) !== -1) {
+            currentIndex.value = i;
+          }
         }
-      }
+      },
+      { deep: true }
+    );
 
-    }, { deep: true })
+    const currentIndex = ref(0);
 
-    const currentIndex = ref(0)
-
-    const searchStatus = ref(true)
+    const searchStatus = ref(true);
     const setCurrentIndex = (data, index) => {
-      if (data.url  === route.fullPath) {
-        return
+      if (data.url === route.fullPath) {
+        return;
       }
-      currentIndex.value = index
-      router.push(data.url)
-    }
+      currentIndex.value = index;
+      router.push(data.url);
+    };
 
     const setSearchStatus = (type) => {
-      searchStatus.value = type
-    }
+      searchStatus.value = type;
+    };
     return {
       NAV_LIST,
       currentIndex,
       setCurrentIndex,
       searchStatus,
-      setSearchStatus
-    }
-  }
-}
+      setSearchStatus,
+    };
+  },
+};
 </script>
-<style  scoped>
+<style scoped>
 * img {
   width: 100%;
   height: 100%;
@@ -100,7 +105,7 @@ export default {
 .main-nav-container {
   width: 100%;
   height: 90px;
-  background: linear-gradient(180deg, #3C6AFB 0%, #75CDFF 100%);
+  background: linear-gradient(180deg, #3c6afb 0%, #75cdff 100%);
 }
 .main-nav-logo {
   width: 108px;
@@ -111,7 +116,7 @@ export default {
   margin: 0 136px 0 132px;
   font-size: 24px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   height: 100%;
   user-select: none;
@@ -131,7 +136,7 @@ export default {
   content: "";
   width: 100%;
   height: 8px;
-  background: #F7B500;
+  background: #f7b500;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -139,7 +144,7 @@ export default {
 .main-nav-search {
   width: 260px;
   height: 40px;
-  background: linear-gradient(90deg, #F4F8FF 0%, #E0EBFF 100%) #FFFFFF;
+  background: linear-gradient(90deg, #f4f8ff 0%, #e0ebff 100%) #ffffff;
   border-radius: 8px;
   position: relative;
 }
@@ -163,7 +168,7 @@ export default {
   left: 0;
   top: 0;
   padding-left: 6px;
-  color: #61AEE9;
+  color: #61aee9;
   display: flex;
   align-items: center;
 }
@@ -179,17 +184,16 @@ export default {
 .main-nav-search-button {
   width: 52px;
   height: 40px;
-  background: linear-gradient(90deg, #F4F8FF 0%, #E0EBFF 100%) #E0EBFF;
+  background: linear-gradient(90deg, #f4f8ff 0%, #e0ebff 100%) #e0ebff;
   border-radius: 0px 8px 8px 0px;
   position: absolute;
   top: 0;
   right: 0;
   font-size: 14px;
-  color: #0091FF;
+  color: #0091ff;
   line-height: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 </style>

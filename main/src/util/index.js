@@ -1,6 +1,6 @@
 import { registerMicroApps, start, createStore } from '../../micro'
 
-import { loading } from '../store'
+import { changeLoading } from '../store'
 
 const store = createStore()
 
@@ -14,13 +14,13 @@ export const registerApp = (list) => {
   registerMicroApps(list, {
     beforeLoad: [
       () => {
-        loading.changeLoading(true)
+        changeLoading(true)
         console.log('开始加载')
       }
     ],
     mounted: [
       () => {
-        loading.changeLoading(false)
+        changeLoading(false)
         console.log('渲染完成')
       }
     ],

@@ -1,8 +1,8 @@
 // 暴露loading的方法
-export * as loading from './loading'
+export { loadingStatus, changeLoading } from './loading'
 
 // 暴露header的方法
-export * as header from './header'
+export {  headerStatus, changeHeader} from './header'
 
 // 暴露nav的方法
-export * as nav from './nav'
+export { navStatus, changeNav } from './nav'

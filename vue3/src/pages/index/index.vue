@@ -1,7 +1,7 @@
 <template>
   <div class="index-container">
     <div class="index-content">
-      hello Vue3 标题
+      <h1>hello Vue3 标题</h1>
     </div>
   </div>
 </template>
